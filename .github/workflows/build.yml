@@ -34,7 +34,9 @@ jobs:
         run: >
           bash -exc "case ${DISTRO} in debian:*|ubuntu:*) 
           apt-get update ; apt-get -y install git
-          ;; *fedora:*|*centos:*) yum -y install git ;; esac"
+          ;; *fedora:*|*centos:*) yum -y install git ;; esac ;
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}"
+
       - uses: actions/checkout@v4
 
       - name: Show OS information
