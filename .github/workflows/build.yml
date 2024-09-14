@@ -32,7 +32,8 @@ jobs:
     steps:
       - name: Install Git
         run: >
-          bash -exc "case ${DISTRO} in debian:*|ubuntu:*) apt-get -y install git
+          bash -exc "case ${DISTRO} in debian:*|ubuntu:*) 
+          apt-get update ; apt-get -y install git
           ;; *fedora:*|*centos:*) yum install git ;; esac"
       - uses: actions/checkout@v4
 
