@@ -113,6 +113,12 @@ Requires:       %{name}-luks%{?_isa} = %{version}-%{release}
 Automatically unlocks LUKS block devices in desktop environments that
 use UDisks2 or storaged (like GNOME).
 
+%package zfs
+Summary:	OpenZFS integration for clevis
+
+%description zfs
+Support for integrating clevis with OpenZFS, using properties
+
 %prep
 %autosetup -S git
 
@@ -193,6 +199,13 @@ exit 0
 %files udisks2
 %{_sysconfdir}/xdg/autostart/%{name}-luks-udisks2.desktop
 %attr(4755, root, root) %{_libexecdir}/%{name}-luks-udisks2
+
+%files zfs
+%{_prefix}/bin/%{name}-zfs-bind
+%{_prefix}/bin/%{name}-zfs-list
+%{_prefix}/bin/%{name}-zfs-unbind
+%{_prefix}/bin/%{name}-zfs-unlock
+%{_libexecdir}/%{name}-zfs-common
 
 %post systemd
 systemctl preset %{name}-luks-askpass.path >/dev/null 2>&1 || :
