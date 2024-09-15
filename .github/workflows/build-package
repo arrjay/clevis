@@ -17,6 +17,7 @@ debian:*|ubuntu:*)
   rm -f "${rpm_src_dest}/clevis-${pkg_version}".*
   git archive -o "${rpm_src_dest}/clevis-${pkg_version}.tar" --prefix="clevis-${pkg_version}/" HEAD
   xz -T0 "${rpm_src_dest}/clevis-${pkg_version}.tar"
+  cp -f packaging/clevis.sysusers "${rpm_src_dest}"
   rpmbuild --define "_version ${pkg_version}" -bb packaging/clevis.spec
   ;;
 
