@@ -1,0 +1,2 @@
+usr/share/initramfs-tools/hooks/clevis-zfs
+etc/zfs/initramfs-tools-load-key.d/clevis-zfs

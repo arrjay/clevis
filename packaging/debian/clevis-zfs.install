@@ -1,0 +1,5 @@
+usr/bin/clevis-zfs-bind
+usr/libexec/clevis-zfs-common
+usr/bin/clevis-zfs-list
+usr/bin/clevis-zfs-unbind
+usr/bin/clevis-zfs-unlock
