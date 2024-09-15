@@ -117,6 +117,7 @@ use UDisks2 or storaged (like GNOME).
 
 %package zfs
 Summary:	OpenZFS integration for clevis
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description zfs
 Support for integrating clevis with OpenZFS, using properties
@@ -125,7 +126,7 @@ Support for integrating clevis with OpenZFS, using properties
 %autosetup -S git
 
 %build
-%meson -Duser=clevis -Dgroup=clevis
+%meson -Duser=clevis -Dgroup=clevis -Dversion=%{version}
 %meson_build
 
 %install

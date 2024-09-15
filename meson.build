@@ -1,6 +1,6 @@
 project('clevis', 'c', license: 'GPL3+',
-  version : run_command('sh', '-c', 'git describe --exact-match HEAD 2>/dev/null | { printf 20. ; git rev-parse --short HEAD ; }', check: true).stdout().strip(),
-  default_options: 'c_std=c99'
+  default_options: 'c_std=c99',
+  version: get_option('version')
 )
 
 libexecdir = join_paths(get_option('prefix'), get_option('libexecdir'))
