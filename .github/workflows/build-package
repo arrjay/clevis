@@ -20,6 +20,8 @@ debian:*|ubuntu:*)
   cp -R packaging/debian .
   [[ -e "debian/control.${DISTRO}" ]] && cp "debian/control.${DISTRO}" debian/control
   debuild -b -uc -us
+  mkdir /output
+  mv ../*.deb /output
   ;;
 
 *fedora:*|*centos:*)
@@ -32,6 +34,9 @@ debian:*|ubuntu:*)
   xz -T0 "${rpm_src_dest}/clevis-${pkg_version}.tar"
   cp -f packaging/clevis.sysusers "${rpm_src_dest}"
   rpmbuild --define "_version ${pkg_version}" -ba packaging/clevis.spec
+  rpm_build_dest="$(rpm -E %_rpmdir)"
+  mkdir /output
+  find "${rpm_build_dest}" -name '*.rpm' -exec mv {} /output \;
   ;;
 
 esac
