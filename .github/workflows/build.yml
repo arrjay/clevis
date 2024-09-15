@@ -47,15 +47,15 @@ jobs:
         run: bash .github/workflows/install-dependencies
 
       - name: Build clevis
-        run: |
+        run: >
           version="$(git describe --exact-match HEAD 2>/dev/null
-          || { printf 20. ; git rev-parse --short HEAD ; })"
-          echo "${version}" > VERSION.TXT
-          mkdir -p build && cd build
-          export ninja=$(command -v ninja)
-          [ -z "${ninja}" ] && export ninja=$(command -v ninja-build)
-          export CFLAGS="-g -coverage"
-          meson .. || cat meson-logs/meson-log.txt >&2
+          || { printf 20. ; git rev-parse --short HEAD ; })" ;
+          echo "${version}" > VERSION.TXT ;
+          mkdir -p build && cd build ;
+          export ninja=$(command -v ninja) ;
+          [ -z "${ninja}" ] && export ninja=$(command -v ninja-build) ;
+          export CFLAGS="-g -coverage" ;
+          meson .. || cat meson-logs/meson-log.txt >&2 ;
           ${ninja}
 
       - name: Run tests
