@@ -11,6 +11,7 @@ debian:*|ubuntu:*)
 
 *fedora:*|*centos:*)
   yum-builddep --define "_version ${pkg_version}" --spec -y packaging/clevis.spec
+  yum -y install rpm-build
   rpm_src_dest="$(rpm -E %_sourcedir)"
   mkdir -p "${rpm_src_dest}"
   rm -f "${rpm_src_dest}/clevis-${pkg_version}".*
