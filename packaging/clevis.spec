@@ -24,7 +24,9 @@ BuildRequires:  meson
 BuildRequires:  asciidoc
 BuildRequires:  ninja-build
 BuildRequires:  bash-completion
+%if 0%{?fedora} >= 41
 BuildRequires:  bash-completion-devel
+%endif
 
 BuildRequires:  libjose-devel >= 8
 BuildRequires:  libluksmeta-devel >= 8
