@@ -72,6 +72,13 @@ jobs:
       - name: Build OS package
         run: bash .github/workflows/build-package
 
+      - name: Collect OS Package Builds
+        uses: actions/upload-artifact@v4
+        with:
+          name: built packages
+          path: |
+            ../*.deb
+            /github/home/rpmbuild/RPMS/*/*.rpm
     container:
       image: ${{matrix.os}}
       env:
