@@ -126,7 +126,8 @@ Support for integrating clevis with OpenZFS, using properties
 %autosetup -S git
 
 %build
-%meson -Duser=clevis -Dgroup=clevis -Dversion=%{version}
+sh -c 'echo %{version} > VERSION.TXT'
+%meson -Duser=clevis -Dgroup=clevis
 %meson_build
 
 %install
