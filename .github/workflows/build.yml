@@ -49,7 +49,7 @@ jobs:
       - name: Build clevis
         run: |
           version="$(git describe --exact-match HEAD 2>/dev/null
-          | { printf 20. ; git rev-parse --short HEAD ; })"
+          || { printf 20. ; git rev-parse --short HEAD ; })"
           echo "${version}" > VERSION.TXT
           mkdir -p build && cd build
           export ninja=$(command -v ninja)
