@@ -65,6 +65,9 @@ jobs:
       - name: Show full test logs
         run: cat build/meson-logs/testlog.txt >&2
 
+      - name: Build OS package
+        run: bash .github/workflows/build-package
+
     container:
       image: ${{matrix.os}}
       env:

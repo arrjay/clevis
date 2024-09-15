@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -eux
+
+pkg_version="$(git describe --exact-match HEAD 2>/dev/null | { printf 20. ; git rev-parse --short HEAD ; })"
+
+case "${DISTRO}" in
+debian:*|ubuntu:*)
+  :
+  ;;
+
+*fedora:*|*centos:*)
+  yum-builddep --define "_version ${pkg_version}" --spec -y packaging/clevis.spec
+  rpm_src_dest="$(rpm -E %_sourcedir)"
+  rm -f "${rpm_src_dest}/clevis-${pkg_version}".*
+  git archive -o "${rpm_src_dest}/clevis-${pkg_version}.tar" --prefix="clevis-${pkg_version}/" HEAD
+  xz -T0 "${rpm_src_dest}/clevis-${pkg_version}.tar"
+  rpmbuild --define "_version ${pkg_version}" -bb packaging/clevis.spec
+  ;;
+
+esac
