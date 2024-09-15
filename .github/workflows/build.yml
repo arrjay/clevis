@@ -75,7 +75,7 @@ jobs:
       - name: Collect OS Package Builds
         uses: actions/upload-artifact@v4
         with:
-          name: built packages
+          name: packages for ${{ matrix.os }}
           path: |
             /output/*.deb
             /output/*.rpm
