@@ -1,0 +1,115 @@
+Source: clevis
+Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+Homepage: https://github.com/latchset/clevis
+Standards-Version: 4.6.2
+Vcs-Browser: https://git.in-ulm.de/cbiedl/clevis
+Vcs-Git: https://git.in-ulm.de/cbiedl/clevis.git
+Build-Depends: debhelper-compat (= 13),
+    asciidoctor,
+    bash-completion,
+    cryptsetup-bin,
+    curl,
+    dracut-core,
+    initramfs-tools,
+    jose,
+    jq,
+    libaudit-dev,
+    libglib2.0-dev,
+    libjansson4,
+    libjose-dev,
+    libluksmeta-dev,
+    libpwquality-tools,
+    libssl-dev,
+    libudisks2-dev,
+    meson,
+    pkgconf,
+    tang,
+    tpm2-tools,
+Priority: optional
+Rules-Requires-Root: no
+Section: net
+
+Package: clevis
+Architecture: linux-any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+    cracklib-runtime,
+    curl,
+    jose,
+    libpwquality-tools,
+    luksmeta,
+Recommends:
+    cryptsetup-bin,
+Description: automated encryption framework
+ Clevis is a plugable framework for automated decryption. It can be used
+ to provide automated decryption of data or even automated unlocking of
+ LUKS volumes.
+ .
+ It supports tang and shamir secret sharing (SSS).
+
+Package: clevis-tpm2
+Architecture: linux-any
+Depends: ${misc:Depends},
+    clevis (= ${binary:Version}),
+    tpm2-tools,
+Recommends:
+    cryptsetup-bin,
+Description: automated encryption framework, TPM2 support
+ Clevis is a plugable framework for automated decryption. It can be used
+ to provide automated decryption of data or even automated unlocking of
+ LUKS volumes.
+ .
+ This package provides the TPM2 pin.
+
+Package: clevis-dracut
+Architecture: linux-any
+Depends: ${misc:Depends},
+    clevis-systemd (= ${binary:Version}),
+    dracut,
+    dracut-network,
+Description: Clevis integration for dracut
+ Clevis is a plugable framework for automated decryption. This package
+ provides integration for dracut to automatically unlock LUKS encrypted
+ block devices in early boot.
+
+Package: clevis-initramfs
+Architecture: linux-any
+Depends: ${misc:Depends},
+    clevis-luks (= ${binary:Version}),
+    initramfs-tools,
+Description: Clevis initramfs integration
+ Clevis is a plugable framework for automated decryption. This package
+ provides integration for initramfs-tools to automatically unlock LUKS
+ encrypted block devices in early boot.
+
+Package: clevis-luks
+Architecture: linux-any
+Depends: ${misc:Depends},
+    clevis (= ${binary:Version}),
+    cryptsetup-bin,
+    jq,
+    luksmeta,
+Description: LUKS integration for clevis
+ This package allows binding a LUKS encrypted volume to a clevis
+ unlocking policy. For automated unlocking, an unlocker will also be
+ required. See, for example, clevis-dracut and clevis-udisks2.
+
+Package: clevis-systemd
+Architecture: linux-any
+Depends: ${misc:Depends},
+    clevis-luks (= ${binary:Version}),
+    systemd,
+Description: systemd integration for clevis
+ Clevis is a plugable framework for automated decryption. This package
+ provides automatic unlocking of LUKS encrypted _netdev block devices
+ from /etc/crypttab.
+
+Package: clevis-udisks2
+Architecture: linux-any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+    adduser,
+    clevis-luks (= ${binary:Version}),
+    udisks2,
+Description: UDisks2/Storaged integration for clevis
+ Clevis is a plugable framework for automated decryption. This package
+ provides automatic unlocking LUKS encrypted block devices in desktop
+ environments that use UDisks2 or storaged.
