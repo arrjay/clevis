@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS := hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+export systemdsystemunitdir = $(shell pkgconf --variable=systemdsystemunitdir systemd | sed s,^/,,)
+
+%:
+	dh $@ --with=bash-completion
+
+override_dh_fixperms:
+	dh_fixperms
+	chmod u+s debian/clevis-udisks2/usr/libexec/clevis-luks-udisks2

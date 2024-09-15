@@ -1,0 +1,11 @@
+
+Unlocking multiple disks
+========================
+
+In some circumstances, clevis(-initramfs) will not unlock all devices
+needed for boot. In that case, consider adding the "initramfs" option
+to /etc/crypttab for any device that is not handled automatically. (And
+don't forget to run update-initramfs afterwards.)
+
+See crypttab(5) for details, and #1000648 for a situation where this
+was needed.

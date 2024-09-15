@@ -1,0 +1,5 @@
+
+# Appearently it's necessary to list the bash completion here
+# else dh_missing will complain. Don't worry, the completion file
+# still gets installed.
+usr/share/bash-completion/completions/clevis

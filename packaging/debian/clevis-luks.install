@@ -1,0 +1,12 @@
+
+usr/bin/clevis-luks-bind
+usr/bin/clevis-luks-common-functions
+usr/bin/clevis-luks-edit
+usr/bin/clevis-luks-list
+usr/bin/clevis-luks-pass
+usr/bin/clevis-luks-regen
+usr/bin/clevis-luks-report
+usr/bin/clevis-luks-unbind
+usr/bin/clevis-luks-unlock
+
+usr/libexec/clevis-luks-unlocker

@@ -1,0 +1,10 @@
+
+debian/tmp/usr/share/man/man1/clevis-luks-bind.1
+debian/tmp/usr/share/man/man1/clevis-luks-edit.1
+debian/tmp/usr/share/man/man1/clevis-luks-list.1
+debian/tmp/usr/share/man/man1/clevis-luks-pass.1
+debian/tmp/usr/share/man/man1/clevis-luks-regen.1
+debian/tmp/usr/share/man/man1/clevis-luks-report.1
+debian/tmp/usr/share/man/man1/clevis-luks-unbind.1
+debian/tmp/usr/share/man/man1/clevis-luks-unlock.1
+debian/tmp/usr/share/man/man7/clevis-luks-unlockers.7

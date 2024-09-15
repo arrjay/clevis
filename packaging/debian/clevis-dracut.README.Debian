@@ -1,0 +1,8 @@
+Changes with Debian 12 ("bookworm")
+===================================
+
+Under certain circumstances, dracut does no longer automatically
+bring up the network needed to unlock using tang.
+
+Possible solution: Add "ip=dhcp" or similar to your kernel command
+line, possibly /etc/default/grub.

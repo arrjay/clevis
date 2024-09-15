@@ -4,9 +4,18 @@ set -eux
 
 pkg_version="$(git describe --exact-match HEAD 2>/dev/null | { printf 20. ; git rev-parse --short HEAD ; })"
 
+echo "running in ${DISTRO}"
+
 case "${DISTRO}" in
 debian:*|ubuntu:*)
-  :
+  apt-get update
+  apt-get -y install build-essential \
+    devscripts asciidoctor bash-completion cryptsetup-bin dracut-core \
+    initramfs-tools jose jq libaudit-dev libglib2.0-dev libjose-dev \
+    libluksmeta-dev libpwquality-tools libssl-dev libudisks2-dev meson \
+    pkgconf tang tpm2-tools
+  cp -R packaging/debian .
+  debuild -b -uc -us
   ;;
 
 *fedora:*|*centos:*)
@@ -18,7 +27,7 @@ debian:*|ubuntu:*)
   git archive -o "${rpm_src_dest}/clevis-${pkg_version}.tar" --prefix="clevis-${pkg_version}/" HEAD
   xz -T0 "${rpm_src_dest}/clevis-${pkg_version}.tar"
   cp -f packaging/clevis.sysusers "${rpm_src_dest}"
-  rpmbuild --define "_version ${pkg_version}" -bb packaging/clevis.spec
+  rpmbuild --define "_version ${pkg_version}" -ba packaging/clevis.spec
   ;;
 
 esac

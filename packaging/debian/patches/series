@@ -1,0 +1,8 @@
+# cherry-picked commits. Keep in upstream's chronological order
+
+# patches for upstream
+for-upstream/2018-10-30.use-asciidoctor-to-build-manpages.patch
+for-upstream/2020-05-21.embed-more-programs-in-initram.patch
+
+# patches for Debian
+debian/2020-05-21.set-unprivileged-user.patch

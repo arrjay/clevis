@@ -1,0 +1,29 @@
+Subject: Use asciidoctor to build the manpages
+Author: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+Date: 2018-10-30
+Bug: https://github.com/latchset/tang/issues/32
+
+--- a/meson.build
++++ b/meson.build
+@@ -41,7 +41,7 @@
+ 
+ jansson = dependency('jansson', version: '>=2.10', required: false)
+ jose = dependency('jose', version: '>=8')
+-a2x = find_program('a2x', required: false)
++asciidoctor = find_program('asciidoctor', required: false)
+ 
+ bins = []
+ mans = []
+@@ -50,10 +50,10 @@
+ 
+ install_data(bins, install_dir: bindir)
+ 
+-if a2x.found()
++if asciidoctor.found()
+   foreach m : mans
+     custom_target(m.split('/')[-1], input: m + '.adoc', output: m.split('/')[-1],
+-      command: [a2x, '-f', 'manpage', '-D', meson.current_build_dir(), '@INPUT@'],
++      command: [asciidoctor, '--attribute', 'reproducible', '--backend=manpage', '-D', meson.current_build_dir(), '@INPUT@'],
+       install_dir: join_paths(get_option('mandir'), 'man' + m.split('.')[-1]),
+       install: true
+     )

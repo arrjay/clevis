@@ -1,0 +1,5 @@
+
+# This program requires root,
+# see https://github.com/martinezjavier/clevis/commit/68427763f47132a21e3fee066f20500a187c3662
+# If there's a way to do this using POSIX capabilities, let me know.
+clevis-udisks2: elevated-privileges 4755 root/root [usr/libexec/clevis-luks-udisks2]

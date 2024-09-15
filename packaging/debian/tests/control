@@ -1,0 +1,15 @@
+Tests: run-testsuite
+Depends:
+    clevis,
+    clevis-luks,
+    cryptsetup,
+    jose,
+    jq,
+    moreutils,
+    openssl,
+    socat,
+    systemd,
+    tang,
+Restrictions:
+    needs-root,
+Architecture: linux-any

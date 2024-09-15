@@ -1,0 +1,179 @@
+clevis (20-1) unstable; urgency=medium
+
+  * New upstream version 20. Closes: #1068640
+  * Update build dependency to systemd-dev. Closes: #1060561
+  * Add jq to install dependncies of clevis-luks. Closes: #1068603
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Tue, 09 Apr 2024 12:12:39 +0200
+
+clevis (19-6) unstable; urgency=medium
+
+  * Take the systemd service unit location from
+    systemd.pc/systemdsystemunitdir. Closes: #1052632
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Fri, 01 Dec 2023 08:43:41 +0100
+
+clevis (19-5) experimental; urgency=medium
+
+  * Upload to experimental
+  * Purge erroneous bug number from previous entry. Really Closes: #1052278
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Wed, 20 Sep 2023 20:59:23 +0200
+
+clevis (19-4) experimental; urgency=medium
+
+  * Upload to experimental
+  * Move remaining files from / to /usr. Closes: #<redacted>
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Tue, 19 Sep 2023 21:56:16 +0200
+
+clevis (19-3) unstable; urgency=medium
+
+  * Retire versioned dependencies met even in oldstable
+  * libblockdev-crypto2: Drop libblockdev dependency, not needed.
+    Closes: #1040924
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sun, 23 Jul 2023 12:04:17 +0200
+
+clevis (19-2) unstable; urgency=medium
+
+  * autopkgtest: Re-enable unbind-unbound-slot-luks2
+  * Fix trigger names
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Thu, 02 Feb 2023 20:55:55 +0100
+
+clevis (19-1) unstable; urgency=medium
+
+  * New upstream version 19
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sat, 28 Jan 2023 17:54:09 +0100
+
+clevis (18-2) unstable; urgency=medium
+
+  * Cherry-pick from upstream:
+    - Sss: use BN_set_word(x, 0) instead of BN_zero() (Closes: #995657)
+    - Do not kill non clevis slots (#315)
+    - Avoid luksmeta corruption on clevis bind (#319)
+    - Use `command -v` instead of `which`
+  * Document a sometime-needed hint to crypttab. Closes: #1000648
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sun, 08 May 2022 21:41:08 +0200
+
+clevis (18-1) unstable; urgency=medium
+
+  * New upstream version 18
+  * Rework patch for detection of systemd-reply-password. Closes: #993246
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Mon, 30 Aug 2021 22:23:01 +0200
+
+clevis (16-2) unstable; urgency=medium
+
+  * Cherry-pick "Fix issue with multiple encrypted devices"
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sun, 28 Feb 2021 16:50:28 +0100
+
+clevis (16-1) unstable; urgency=medium
+
+  * New upstream version 16
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Wed, 10 Feb 2021 09:25:29 +0100
+
+clevis (15-5) unstable; urgency=medium
+
+  * Install clevis-luks-askpass as executable. Closes: #979711
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sat, 16 Jan 2021 12:51:32 +0100
+
+clevis (15-4) unstable; urgency=medium
+
+  * Cherry-pick test-suite reorganisation commits
+  * Re-organize and enhance autopkgtest. Closes: #979248
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Mon, 04 Jan 2021 22:50:12 +0100
+
+clevis (15-3) unstable; urgency=medium
+
+  * Enhance "Work around /dev/fd/<num> no longer being created by
+    systemd". Closes: #979089
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sun, 03 Jan 2021 15:18:50 +0100
+
+clevis (15-2) unstable; urgency=medium
+
+  * Fix build on non-usrmerged chroots
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Tue, 29 Dec 2020 12:52:13 +0100
+
+clevis (15-1) unstable; urgency=medium
+
+  * New upstream version 15
+  * Work around /dev/fd/<num> no longer being created by systemd.
+    Closes: #968518
+  * Cherry-pick support for tpm2-tools 5.X. Closes: #978574
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Mon, 28 Dec 2020 22:55:49 +0100
+
+clevis (13-2) unstable; urgency=medium
+
+  * Make clevis-udisks2 usable
+  * Embed TPM kernel modules in initramfs
+  * Include more programs in the generated initrd/initramfs
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Thu, 21 May 2020 22:32:37 +0200
+
+clevis (13-1) unstable; urgency=low
+
+  * New upstream version 13. Closes: #954208
+  * Build clevis-dracut and clevis-initramfs as arch-any.
+    Closes: #948137
+  * Trigger initramfs generation. Closes: #954206
+  * Fix brainos in package descriptions. Closes: #954182
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Mon, 18 May 2020 18:47:38 +0200
+
+clevis (12-1) experimental; urgency=medium
+
+  * Upload to experimental
+  * New upstream version 12. Closes: #891410, #952240
+  * Add support for clevis-initramfs
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Mon, 24 Feb 2020 00:05:51 +0100
+
+clevis (11-2) unstable; urgency=medium
+
+  * Use cryptsetup-bin as dependency, following the cryptsetup
+    transition
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Fri, 01 Mar 2019 11:37:24 +0100
+
+clevis (11-1) unstable; urgency=medium
+
+  * New upstream version. Closes: #912147
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Tue, 30 Oct 2018 22:55:28 +0100
+
+clevis (10-2) unstable; urgency=medium
+
+  * Don't fail when building architecture all packages only.
+    Closes: #906595
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sun, 26 Aug 2018 10:37:31 +0200
+
+clevis (10-1) unstable; urgency=medium
+
+  * New upstream version
+  * Install clevis-luks-udisks2 setuid root. Closes: #902447
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Tue, 24 Jul 2018 07:48:03 +0200
+
+clevis (9-1) UNRELEASED; urgency=medium
+
+  * New upstream version
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sat, 24 Feb 2018 11:02:35 +0100
+
+clevis (8-1) unstable; urgency=medium
+
+  * Initial release. Closes: #854410
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Wed, 29 Nov 2017 00:01:49 +0100

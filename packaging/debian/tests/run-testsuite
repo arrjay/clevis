@@ -1,0 +1,42 @@
+#!/bin/sh
+
+set -eu
+
+# emulate substitution
+sed -e '
+s:@SOCAT@:/usr/bin/socat: ;
+s:@TANGD_KEYGEN@:/usr/libexec/tangd-keygen: ;
+s:@TANGD_UPDATE@:: ;
+s:@TANGD@:/usr/libexec/tangd:
+' \
+    <src/pins/tang/tests/tang-common-test-functions.in \
+    >src/pins/tang/tests/tang-common-test-functions
+
+# patch out luksv2 detection switch - we're on the bright side already
+sed -e 's/@OLD_CRYPTSETUP@/0/' \
+    <src/luks/tests/tests-common-functions.in \
+    >src/luks/tests/tests-common-functions
+
+src_dir="$PWD"
+
+export PATH="$src_dir/src/pins/tang/tests:$PATH"
+
+exit=0
+
+cd "$src_dir/src/luks/tests"
+
+for f in $(find . -type f -not -name 'tests-common-functions*' -executable | sort); do
+    echo "I: Running test $f"
+    # test are very noisy, keep them silent as long as they pass
+    t0="$(date +%s)"
+    chronic "$f" || exit=$?
+    delta="$(($(date +%s) - t0))"
+    echo "I: ... run time: $delta"
+done
+
+cd "$src_dir/src/pins/tang/tests"
+
+echo "I: Running test pin-tang"
+chronic bash pin-tang || exit=$?
+
+exit $exit
