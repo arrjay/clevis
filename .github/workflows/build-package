@@ -12,6 +12,7 @@ debian:*|ubuntu:*)
 *fedora:*|*centos:*)
   yum-builddep --define "_version ${pkg_version}" --spec -y packaging/clevis.spec
   rpm_src_dest="$(rpm -E %_sourcedir)"
+  mkdir -p "${rpm_src_dest}"
   rm -f "${rpm_src_dest}/clevis-${pkg_version}".*
   git archive -o "${rpm_src_dest}/clevis-${pkg_version}.tar" --prefix="clevis-${pkg_version}/" HEAD
   xz -T0 "${rpm_src_dest}/clevis-${pkg_version}.tar"
