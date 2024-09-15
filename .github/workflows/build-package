@@ -14,7 +14,9 @@ debian:*|ubuntu:*)
     initramfs-tools jose jq libaudit-dev libglib2.0-dev libjose-dev \
     libluksmeta-dev libpwquality-tools libssl-dev libudisks2-dev meson \
     pkgconf tang tpm2-tools
-  [[ "${DISTRO}" == "debian:testing" ]] && apt-get -y install systemd-dev
+  case "${DISTRO}" in
+    debian:testing|ubuntu:devel) apt-get -y install systemd-dev ;;
+  esac
   cp -R packaging/debian .
   [[ -e "debian/control.${DISTRO}" ]] && cp "debian/control.${DISTRO}" debian/control
   debuild -b -uc -us
