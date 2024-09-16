@@ -74,7 +74,7 @@ jobs:
 
       - id: artifactName
         run: >
-          artifactIn=${{ matrix.os }} ;
+          artifactIn=${{ matrix.os }} ; artifactIn=${artifactIn##*/} ;
           echo "::set-output name=artifactValue::${artifactIn//:/_}"
 
       - name: Collect OS Package Builds
