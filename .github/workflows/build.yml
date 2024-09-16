@@ -72,10 +72,15 @@ jobs:
       - name: Build OS package
         run: bash .github/workflows/build-package
 
+      - id: artifactName
+        run: >
+          artifactIn=${{ matrix.os }} ;
+          echo "::set-output name=artifactValue::${artifactIn//:/_}"
+
       - name: Collect OS Package Builds
         uses: actions/upload-artifact@v4
         with:
-          name: packages for ${{ matrix.os }}
+          name: packages for ${{ steps.artifactName.outputs.artifactValue }}
           path: |
             /output/*.deb
             /output/*.rpm
