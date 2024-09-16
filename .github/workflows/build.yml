@@ -74,8 +74,9 @@ jobs:
 
       - id: artifactName
         run: >
-          artifactIn=${{ matrix.os }} ; artifactIn=${artifactIn##*/} ;
-          echo "::set-output name=artifactValue::${artifactIn//:/_}"
+          printf '%s=' 'artifactValue' >> $GITHUB_OUTPUT ;
+          echo ${{ matrix.os }} |
+          sed -e 's@.*/@@g' -e 's@:@_@g' >> $GITHUB_OUTPUT ;
 
       - name: Collect OS Package Builds
         uses: actions/upload-artifact@v4
