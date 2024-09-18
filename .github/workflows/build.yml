@@ -13,9 +13,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     continue-on-error: ${{ ! matrix.stable }}
+    artifact_name: "/output/packages.zip"
     strategy:
       matrix:
-        artifact_name: /output/packages.zip
         include:
           - os: fedora:latest
             stable: true
