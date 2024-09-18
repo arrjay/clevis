@@ -36,7 +36,7 @@ jobs:
             asset_name: ${{ github.event.repository.name }}-debian-rolling.zip
           - os: ubuntu:latest
             stable: true
-            asset_name: ${{ github.event.repository.name }}-debian-latest.zip
+            asset_name: ${{ github.event.repository.name }}-ubuntu-latest.zip
           - os: quay.io/fedora/fedora:rawhide
             stable: false
             asset_name: ${{ github.event.repository.name }}-fedora-rawhide.zip
@@ -87,6 +87,7 @@ jobs:
         run: bash .github/workflows/build-package
 
       - name: Upload binaries to release
+        if: startsWith(github.event.ref, 'refs/tags/v')
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
