@@ -23,6 +23,7 @@ debian:*|ubuntu:*)
   debuild -b -uc -us
   mkdir /output
   mv ../*.deb /output
+  cd /output && zip packages.zip *.deb
   ;;
 
 *fedora:*|*centos:*)
@@ -38,6 +39,7 @@ debian:*|ubuntu:*)
   rpm_build_dest="$(rpm -E %_rpmdir)"
   mkdir /output
   find "${rpm_build_dest}" -name '*.rpm' -exec mv {} /output \;
+  cd /output && zip packages.zip *.rpm
   ;;
 
 esac

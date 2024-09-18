@@ -15,20 +15,35 @@ jobs:
     continue-on-error: ${{ ! matrix.stable }}
     strategy:
       matrix:
-        os:
-          - fedora:latest
-          - quay.io/centos/centos:stream10-development
-          - quay.io/centos/centos:stream9
-          - debian:testing
-          - debian:latest
-          - ubuntu:rolling
-          - ubuntu:latest
-        stable: [true]
+        artifact_name: /output/packages.zip
         include:
+          - os: fedora:latest
+            stable: true
+            asset_name: ${{ github.event.repository.name }}-fedora-latest.zip
+          - os: quay.io/centos/centos:stream10-development
+            stable: true
+            asset_name: ${{ github.event.repository.name }}-centos-stream10-development.zip
+          - os: quay.io/centos/centos:stream9
+            stable: true
+            asset_name: ${{ github.event.repository.name }}-centos-stream9.zip
+          - os: debian:testing
+            stable: true
+            asset_name: ${{ github.event.repository.name }}-debian-testing.zip
+          - os: debian:latest
+            stable: true
+            asset_name: ${{ github.event.repository.name }}-debian-latest.zip
+          - os: ubuntu:rolling
+            stable: true
+            asset_name: ${{ github.event.repository.name }}-debian-rolling.zip
+          - os: ubuntu:latest
+            stable: true
+            asset_name: ${{ github.event.repository.name }}-debian-latest.zip
           - os: quay.io/fedora/fedora:rawhide
             stable: false
+            asset_name: ${{ github.event.repository.name }}-fedora-rawhide.zip
           - os: ubuntu:devel
             stable: false
+            asset_name: ${{ github.event.repository.name }}-ubuntu-devel.zip
     steps:
       - name: Install Git
         run: >
@@ -72,19 +87,6 @@ jobs:
       - name: Build OS package
         run: bash .github/workflows/build-package
 
-      - id: artifactName
-        run: >
-          printf '%s=' 'artifactValue' >> $GITHUB_OUTPUT ;
-          echo ${{ matrix.os }} |
-          sed -e 's@.*/@@g' -e 's@:@_@g' >> $GITHUB_OUTPUT ;
-
-      - name: Collect OS Package Builds
-        uses: actions/upload-artifact@v4
-        with:
-          name: packages for ${{ steps.artifactName.outputs.artifactValue }}
-          path: |
-            /output/*.deb
-            /output/*.rpm
     container:
       image: ${{matrix.os}}
       env:
