@@ -13,7 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     continue-on-error: ${{ ! matrix.stable }}
-    artifact_name: "/output/packages.zip"
     strategy:
       matrix:
         include:
@@ -86,6 +85,14 @@ jobs:
 
       - name: Build OS package
         run: bash .github/workflows/build-package
+
+      - name: Upload binaries to release
+        users: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /output/packages.zip
+          asset_name: ${{ matrix.asset_name }}
+          tag: ${{ github.ref }}
 
     container:
       image: ${{matrix.os}}
