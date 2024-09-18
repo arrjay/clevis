@@ -19,7 +19,7 @@ debian:*|ubuntu:*)
   esac
   cp -R packaging/debian .
   [[ -e "debian/control.${DISTRO}" ]] && cp "debian/control.${DISTRO}" debian/control
-  dch -n -U --noquery -v "${pkg_version}" "automatic build"
+  dch -U --noquery -v "${pkg_version}" "automatic build"
   debuild -b -uc -us
   mkdir /output
   mv ../*.deb /output
