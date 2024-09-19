@@ -72,6 +72,15 @@ Description: Clevis integration for dracut
  provides integration for dracut to automatically unlock LUKS encrypted
  block devices in early boot.
 
+Package: clevis-dracut-zfs
+Architecture: linux-any
+Depends: ${misc:Depends},
+    clevis-zfs (= ${binary:Version}),
+    dracut,
+Description: Clevis dracut/ZFS integration
+ Clevis is a plugable framework for automated decryption. This package
+ provides automatic unlocking ZFS datasets in early boot.
+
 Package: clevis-initramfs
 Architecture: linux-any
 Depends: ${misc:Depends},

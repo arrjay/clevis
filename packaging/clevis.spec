@@ -210,6 +210,7 @@ exit 0
 %{_prefix}/bin/%{name}-zfs-unbind
 %{_prefix}/bin/%{name}-zfs-unlock
 %{_libexecdir}/%{name}-zfs-common
+%{_prefix}/lib/dracut/modules.d/60%{name}-zfs
 
 %post systemd
 systemctl preset %{name}-luks-askpass.path >/dev/null 2>&1 || :
