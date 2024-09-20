@@ -9,6 +9,9 @@ on:
     ignore-paths:
       - '**.md'
 
+env:
+  VERSION_TAG: ${{ startsWith(github.event.ref, 'refs/tags/') && github.ref_name || format('21.0.{0}', github.run_attempt) }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -62,9 +65,7 @@ jobs:
 
       - name: Build clevis
         run: >
-          version="$(git describe --exact-match HEAD 2>/dev/null
-          || { printf 20. ; git rev-parse --short HEAD ; })" ;
-          echo "${version}" > VERSION.TXT ;
+          echo "${VERSION_TAG}" > VERSION.TXT ;
           mkdir -p build && cd build ;
           export ninja=$(command -v ninja) ;
           [ -z "${ninja}" ] && export ninja=$(command -v ninja-build) ;

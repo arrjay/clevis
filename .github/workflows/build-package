@@ -2,7 +2,8 @@
 
 set -eux
 
-pkg_version="$(git describe --exact-match HEAD 2>/dev/null | { printf 20. ; git rev-parse --short HEAD ; })"
+pkg_version="${VERSION_TAG:-}"
+[[ "${pkg_version:-}" ]] || pkg_version="$(git describe --exact-match HEAD 2>/dev/null | { printf 20. ; git rev-parse --short HEAD ; })"
 
 echo "running in ${DISTRO}"
 
