@@ -1,2 +1,2 @@
-usr/lib/dracut/modules.d/60clevis-zfs/clevis-hook.sh
+usr/lib/dracut/modules.d/60clevis-zfs/clevis-zfs-hook.sh
 usr/lib/dracut/modules.d/60clevis-zfs/module-setup.sh
