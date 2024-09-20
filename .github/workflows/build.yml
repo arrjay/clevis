@@ -19,33 +19,18 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: fedora:latest
+          - os: fedora:40
             stable: true
-            asset_name: ${{ github.event.repository.name }}-fedora-latest.zip
-          - os: quay.io/centos/centos:stream10-development
+            asset_name: ${{ github.event.repository.name }}-fedora-40.zip
+          - os: debian:bookworm
             stable: true
-            asset_name: ${{ github.event.repository.name }}-centos-stream10-development.zip
-          - os: quay.io/centos/centos:stream9
+            asset_name: ${{ github.event.repository.name }}-debian-bookworm.zip
+          - os: ubuntu:noble
             stable: true
-            asset_name: ${{ github.event.repository.name }}-centos-stream9.zip
-          - os: debian:testing
+            asset_name: ${{ github.event.repository.name }}-ubuntu-noble.zip
+          - os: ubuntu:jammy
             stable: true
-            asset_name: ${{ github.event.repository.name }}-debian-testing.zip
-          - os: debian:latest
-            stable: true
-            asset_name: ${{ github.event.repository.name }}-debian-latest.zip
-          - os: ubuntu:rolling
-            stable: true
-            asset_name: ${{ github.event.repository.name }}-debian-rolling.zip
-          - os: ubuntu:latest
-            stable: true
-            asset_name: ${{ github.event.repository.name }}-ubuntu-latest.zip
-          - os: quay.io/fedora/fedora:rawhide
-            stable: false
-            asset_name: ${{ github.event.repository.name }}-fedora-rawhide.zip
-          - os: ubuntu:devel
-            stable: false
-            asset_name: ${{ github.event.repository.name }}-ubuntu-devel.zip
+            asset_name: ${{ github.event.repository.name }}-ubuntu-jammy.zip
     steps:
       - name: Install Git
         run: >
