@@ -10,7 +10,7 @@
 # load the kernel command line vars
 [ -z "$root" ] && root="$(getarg root=)"
 # If root is not ZFS= or zfs: or rootfstype is not zfs then we are not supposed to handle it.
-[ "${root##zfs:}" = "${root}" ] && [ "${root##ZFS=}" = "${root}" ] && [ "$rootfstype" != "zfs" ] && exit 0
+[ "${root##zfs:}" = "${root}" ] && [ "${root##ZFS=}" = "${root}" ] && [ "$fstype" != "zfs" ] && exit 0
 
 # There is a race between the zpool import and the pre-mount hooks, so we wait for a pool to be imported
 while true; do
