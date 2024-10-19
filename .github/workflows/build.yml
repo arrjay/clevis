@@ -10,7 +10,7 @@ on:
       - '**.md'
 
 env:
-  VERSION_TAG: ${{ startsWith(github.event.ref, 'refs/tags/') && github.ref_name || format('21.0.{0}', github.run_number) }}
+  VERSION_TAG: ${{ startsWith(github.event.ref, 'refs/tags/') && github.ref_name || format('21.2.{0}', github.run_number) }}
 
 jobs:
   build:
