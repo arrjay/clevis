@@ -1,6 +1,6 @@
 project('clevis', 'c', license: 'GPL3+',
-  version: files ('VERSION.TXT')
-  default_options: 'c_std=c99',
+  version: files ('VERSION.TXT'),
+  default_options: 'c_std=c99'
 )
 
 libexecdir = join_paths(get_option('prefix'), get_option('libexecdir'))
