@@ -1,5 +1,8 @@
 
 usr/lib/dracut/modules.d/60clevis-pin-null/module-setup.sh
+usr/lib/dracut/modules.d/60clevis-pin-pkcs11/clevis-pkcs11-hook.sh
+usr/lib/dracut/modules.d/60clevis-pin-pkcs11/clevis-pkcs11-prehook.sh
+usr/lib/dracut/modules.d/60clevis-pin-pkcs11/module-setup.sh
 usr/lib/dracut/modules.d/60clevis-pin-sss/module-setup.sh
 usr/lib/dracut/modules.d/60clevis-pin-tang/module-setup.sh
 usr/lib/dracut/modules.d/60clevis-pin-tpm2/module-setup.sh

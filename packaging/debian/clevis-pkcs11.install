@@ -1,0 +1,9 @@
+
+usr/bin/clevis-decrypt-pkcs11
+usr/bin/clevis-encrypt-pkcs11
+usr/bin/clevis-pkcs11-afunix-socket-unlock
+usr/bin/clevis-pkcs11-common
+usr/lib/systemd/system/clevis-luks-pkcs11-askpass.service
+usr/lib/systemd/system/clevis-luks-pkcs11-askpass.socket
+usr/libexec/clevus-luks-pkcs11-askpass
+usr/libexec/clevus-luks-pkcs11-askpin
