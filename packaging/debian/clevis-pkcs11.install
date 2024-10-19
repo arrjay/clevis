@@ -3,5 +3,5 @@ usr/bin/clevis-decrypt-pkcs11
 usr/bin/clevis-encrypt-pkcs11
 usr/bin/clevis-pkcs11-afunix-socket-unlock
 usr/bin/clevis-pkcs11-common
-lib/systemd/system/clevis-luks-pkcs11-askpass.service
-lib/systemd/system/clevis-luks-pkcs11-askpass.socket
+usr/lib/systemd/system/clevis-luks-pkcs11-askpass.service
+usr/lib/systemd/system/clevis-luks-pkcs11-askpass.socket
