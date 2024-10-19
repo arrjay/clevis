@@ -150,7 +150,7 @@ exit 0
 %files
 %license COPYING
 %{_datadir}/bash-completion/
-%{_bindir}/${name}-decrypt-pkcs11
+%{_bindir}/%{name}-decrypt-pkcs11
 %{_bindir}/%{name}-decrypt-tang
 %{_bindir}/%{name}-decrypt-tpm2
 %{_bindir}/%{name}-decrypt-sss
