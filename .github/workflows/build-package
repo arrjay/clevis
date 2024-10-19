@@ -20,6 +20,7 @@ debian:*|ubuntu:*)
   esac
   cp -R packaging/debian .
   [[ -e "debian/control.${DISTRO}" ]] && cp "debian/control.${DISTRO}" debian/control
+  [[ -e "debian/clevis.pkcs11.install.${DISTRO}" ]] && cp "debian/clevis.pkcs11.install.${DISTRO}" debian/clevis.pkcs11.install
   dch -U --noquery -v "${pkg_version}" "automatic build"
   debuild -b -uc -us
   mkdir /output
