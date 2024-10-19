@@ -46,6 +46,19 @@ Description: automated encryption framework
  .
  It supports tang and shamir secret sharing (SSS).
 
+Package: clevis-pkcs11
+Architecture: linux-any
+Depends: ${misc:Depends},
+    clevis (= ${binary:Version}),
+Recommends:
+    cryptsetup-bin,
+Description: automated encryption framework, TPM2 support
+ Clevis is a plugable framework for automated decryption. It can be used
+ to provide automated decryption of data or even automated unlocking of
+ LUKS volumes.
+ .
+ This package provides the PKCS11 pin.
+
 Package: clevis-tpm2
 Architecture: linux-any
 Depends: ${misc:Depends},
