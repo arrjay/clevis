@@ -150,16 +150,21 @@ exit 0
 %files
 %license COPYING
 %{_datadir}/bash-completion/
+%{_bindir}/${name}-decrypt-pkcs11
 %{_bindir}/%{name}-decrypt-tang
 %{_bindir}/%{name}-decrypt-tpm2
 %{_bindir}/%{name}-decrypt-sss
 %{_bindir}/%{name}-decrypt-null
 %{_bindir}/%{name}-decrypt
+%{_bindir}/%{name}-encrypt-pkcs11
 %{_bindir}/%{name}-encrypt-tang
 %{_bindir}/%{name}-encrypt-tpm2
 %{_bindir}/%{name}-encrypt-sss
 %{_bindir}/%{name}-encrypt-null
 %{_bindir}/%{name}
+%{_bindir}/%{name}-pkcs11-afunix-socket-unlock
+%{_bindir}/%{name}-pkcs11-common
+%{_mandir}/man1/%{name}-encrypt-pkcs11.1*
 %{_mandir}/man1/%{name}-encrypt-tang.1*
 %{_mandir}/man1/%{name}-encrypt-tpm2.1*
 %{_mandir}/man1/%{name}-encrypt-sss.1*
@@ -190,12 +195,19 @@ exit 0
 %files systemd
 %{_libexecdir}/%{name}-luks-askpass
 %{_libexecdir}/%{name}-luks-unlocker
+%{_libexecdir}/%{name}-luks-pkcs11-askpass
+%{_libexecdir}/%{name}-luks-pkcs11-askpin
 %{_unitdir}/%{name}-luks-askpass.path
 %{_unitdir}/%{name}-luks-askpass.service
+%{_unitdir}/%{name}-luks-pkcs11-askpass.service
+%{_unitdir}/%{name}-luks-pkcs11-askpass.socket
 
 %files dracut
 %{_prefix}/lib/dracut/modules.d/60%{name}
 %{_prefix}/lib/dracut/modules.d/60%{name}-pin-null/module-setup.sh
+%{_prefix}/lib/dracut/modules.d/60%{name}-pin-pkcs11/%{name}-pkcs11-hook.sh
+%{_prefix}/lib/dracut/modules.d/60%{name}-pin-pkcs11/%{name}-pkcs11-prehook.sh
+%{_prefix}/lib/dracut/modules.d/60%{name}-pin-pkcs11/module-setup.sh
 %{_prefix}/lib/dracut/modules.d/60%{name}-pin-sss/module-setup.sh
 %{_prefix}/lib/dracut/modules.d/60%{name}-pin-tang/module-setup.sh
 %{_prefix}/lib/dracut/modules.d/60%{name}-pin-tpm2/module-setup.sh
