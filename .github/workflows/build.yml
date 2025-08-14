@@ -19,12 +19,15 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: fedora:40
+          - os: fedora:42
             stable: true
-            asset_name: ${{ github.event.repository.name }}-fedora-40.zip
+            asset_name: ${{ github.event.repository.name }}-fedora-42.zip
           - os: debian:bookworm
             stable: true
             asset_name: ${{ github.event.repository.name }}-debian-bookworm.zip
+          - os: debian:trixie
+            stable: true
+            asset_name: ${{ github.event.repository.name }}-debian-trixie.zip
           - os: ubuntu:noble
             stable: true
             asset_name: ${{ github.event.repository.name }}-ubuntu-noble.zip

@@ -16,7 +16,7 @@ debian:*|ubuntu:*)
     libluksmeta-dev libpwquality-tools libssl-dev libudisks2-dev meson \
     pkgconf tang tpm2-tools
   case "${DISTRO}" in
-    debian:testing|ubuntu:devel) apt-get -y install systemd-dev ;;
+    debian:testing|debian:trixie|ubuntu:devel) apt-get -y install systemd-dev ;;
   esac
   cp -R packaging/debian .
   [[ -e "debian/control.${DISTRO}" ]] && cp "debian/control.${DISTRO}" debian/control
